@@ -1,0 +1,26 @@
+server:
+  port: 8088
+spring:
+  profiles:
+    active: test
+---
+spring:
+  profiles: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/shared
+---
+spring:
+  profiles: test
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/trusause/spring-cloud-test
+          search-paths: my-config-service/src/main/resources/test
+          username: trusause
+          password: ai181003
+          default-label: test
+
