@@ -2,7 +2,7 @@ server:
   port: 8088
 spring:
   profiles:
-    active: test
+    active: native
 ---
 spring:
   profiles: native
