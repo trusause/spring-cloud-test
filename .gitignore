@@ -30,8 +30,3 @@ fs-job-logs
 
 ### 开发配置文件 ###
 base-installation.yml
-
-### 项目概括文档目录 ###
-zreadme
-cary*
-.gitignore.rej
