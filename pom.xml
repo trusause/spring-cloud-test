@@ -18,6 +18,7 @@
         <module>config</module>
         <module>registry</module>
         <module>demo</module>
+        <module>app</module>
     </modules>
 
     <properties>
