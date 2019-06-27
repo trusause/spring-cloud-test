@@ -6,7 +6,8 @@ spring:
     time-zone: GMT+8
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: com.mysql.jdbc.Driver
+    #    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://uop-db:13104/uop_application?useUnicode=true&characterEncoding=UTF-8
     username: root
     password: db_password
