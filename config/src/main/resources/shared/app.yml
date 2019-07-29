@@ -26,3 +26,23 @@ spring:
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
 #     通过connectProperties属性来打开mergeSql功能；慢SQL记录
     useGlobalDataSourceStat: true # 合并多个DruidDataSource的监控数据
+
+#showsql
+logging:
+  level:
+    com:
+      trusause:
+        app:
+          mapper: debug
+
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: com.trusause.app
+
+#pagehelper
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+  returnPageInfo: check

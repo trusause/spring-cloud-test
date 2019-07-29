@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * @Author: weicl
  * @Date: 2019/6/20 7:40 PM
@@ -35,4 +37,21 @@ public class TeacherController {
         return ResultDTO.builder().data(teacher).build();
     }
 
+    @GetMapping("/findByOneUseMybqtis")
+    public ResultDTO findByOneUseMybqtis(Integer id) {
+        Teacher teacher = teacherService.sel(id);
+        return ResultDTO.builder().data(teacher).build();
+    }
+
+    @GetMapping("/findByCodeUseMybqtis")
+    public ResultDTO findByCodeUseMybqtis(String code) {
+        Teacher teacher = teacherService.selectByCode(code);
+        return ResultDTO.builder().data(teacher).build();
+    }
+
+    @GetMapping("/findByNameUseMybqtis")
+    public ResultDTO findByNameUseMybqtis(String name) {
+        List<Teacher> teacherList = teacherService.selectByName(name);
+        return ResultDTO.builder().data(teacherList).build();
+    }
 }
