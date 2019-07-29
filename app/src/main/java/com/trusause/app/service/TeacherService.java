@@ -1,5 +1,7 @@
 package com.trusause.app.service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.trusause.app.domain.Teacher;
 import com.trusause.app.mapper.TeacherMapper;
 import com.trusause.app.repository.TeacherRepository;
@@ -41,6 +43,9 @@ public class TeacherService {
     }
 
     public List<Teacher> selectByName(String name) {
+        PageInfo pageInfo = new PageInfo(teacherMapper.selectByName(name));
+        PageHelper.startPage(1, 2);
+        PageInfo pageInfo1 = new PageInfo(teacherMapper.selectByName(name));
         return teacherMapper.selectByName(name);
     }
 }
