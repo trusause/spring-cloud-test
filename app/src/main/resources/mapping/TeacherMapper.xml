@@ -4,20 +4,25 @@
 <mapper namespace="com.trusause.app.mapper.TeacherMapper">
 
     <resultMap id="BaseResultMap" type="com.trusause.app.domain.Teacher">
-        <result column="id" jdbcType="INTEGER" property="id"/>
-        <result column="code" jdbcType="VARCHAR" property="code"/>
-        <result column="name" jdbcType="VARCHAR" property="name"/>
-        <result column="delete_flag" jdbcType="BIT" property="deleteFlag"/>
+        <result column="delete_flag" jdbcType="TINYINT" property="deleteFlag"/>
+        <result column="system_create_time" jdbcType="TIMESTAMP" property="systemCreateTime"/>
+        <result column="system_update_time" jdbcType="TIMESTAMP" property="systemUpdateTime"/>
+        <result column="create_person" jdbcType="VARCHAR" property="createPerson"/>
+        <result column="create_person_name" jdbcType="VARCHAR" property="createPersonName"/>
+        <result column="update_person" jdbcType="VARCHAR" property="updatePerson"/>
+        <result column="update_person_name" jdbcType="VARCHAR" property="updatePersonName"/>
     </resultMap>
 
     <select id="sel" resultType="com.trusause.app.domain.Teacher">
-        select * from t_test_teacher where id = #{id}
+        select id,delete_flag as deleteFlag from t_test_teacher where id = ${id}
     </select>
 
-    <select id="selectByCode" parameterType="String" resultType="com.trusause.app.domain.Teacher">
-        select * from t_test_teacher where code = "'"${code,jdbcType=VARCHAR}"'"
+    <!--$的用法，$不会预编译，会存在sql注入，适用于已知的值-->
+    <select id="selectByCode" resultMap="BaseResultMap">
+        select * from t_test_teacher where code = '${code}'
     </select>
 
+    <!--#号的用法，#会预编译（不是数据库的预编译），可防止注入，适用于用户动态输入的值-->
     <select id="selectByName" resultType="com.trusause.app.domain.Teacher">
         select * from t_test_teacher
         <where>
@@ -26,5 +31,9 @@
             </if>
         </where>
     </select>
+
+    <insert id="insert">
+      insert into
+    </insert>
 
 </mapper>

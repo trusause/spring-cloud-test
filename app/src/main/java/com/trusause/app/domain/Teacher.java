@@ -37,11 +37,4 @@ public class Teacher extends GenericEntity {
 
     private String name;
 
-    /**
-     * 是否删除标记（0：未删除；1：删除。因为要推送到各个系统，所以所有需要推送的数据表数据都不能物理删除，只能逻辑软删除）
-     */
-    @Column(columnDefinition = "boolean DEFAULT false COMMENT '是否删除标记'")
-    @Builder.Default
-    private Boolean deleteFlag = Boolean.FALSE;
-
 }

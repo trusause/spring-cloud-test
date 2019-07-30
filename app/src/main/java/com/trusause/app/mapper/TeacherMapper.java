@@ -15,9 +15,9 @@ import java.util.List;
 @Repository
 public interface TeacherMapper {
 
-    Teacher sel(int id);
+    Teacher sel(@Param("id") int id);
 
-    Teacher selectByCode(String code);
+    Teacher selectByCode(@Param("code") String code);
 
     List<Teacher> selectByName(@Param("name") String name);
 
