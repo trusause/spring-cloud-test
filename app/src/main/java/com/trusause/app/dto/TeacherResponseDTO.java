@@ -1,6 +1,7 @@
-package com.trusause.app.domain;
+package com.trusause.app.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.trusause.app.domain.GenericEntity;
+import com.trusause.app.domain.GenericEntityWithPage;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,15 +19,11 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "t_test_teacher")
-public class Teacher extends GenericEntityWithPage {
+public class TeacherResponseDTO extends GenericEntity {
 
     /**
      * 主键
      */
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String code;

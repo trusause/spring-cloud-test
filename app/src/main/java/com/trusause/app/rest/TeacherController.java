@@ -1,5 +1,7 @@
 package com.trusause.app.rest;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
 import com.trusause.app.domain.Teacher;
 import com.trusause.app.dto.ResultDTO;
 import com.trusause.app.service.TeacherService;
@@ -49,9 +51,9 @@ public class TeacherController {
         return ResultDTO.builder().data(teacher).build();
     }
 
-    @GetMapping("/findByNameUseMybqtis")
-    public ResultDTO findByNameUseMybqtis(String name) {
-        List<Teacher> teacherList = teacherService.selectByName(name);
+    @GetMapping("/findByNameUseMybqtisWithPage")
+    public ResultDTO findByNameUseMybqtis(Teacher teacher) {
+        PageInfo<Teacher> teacherList = teacherService.selectByName(teacher);
         return ResultDTO.builder().data(teacherList).build();
     }
 }

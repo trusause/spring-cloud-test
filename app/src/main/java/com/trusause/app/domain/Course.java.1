@@ -1,0 +1,85 @@
+package com.trusause.app.domain;
+
+import java.util.Date;
+
+public class Course extends GenericEntity {
+    private Integer id;
+
+    private String code;
+
+    private String name;
+
+    private String createPerson;
+
+    private String createPersonName;
+
+    private Boolean deleteFlag;
+
+    private Date systemCreateTime;
+
+    private Date systemUpdateTime;
+
+    private String updatePerson;
+
+    private String updatePersonName;
+
+    private Integer score;
+
+    public Course(Integer id, String code, String name, String createPerson, String createPersonName, Boolean deleteFlag, Date systemCreateTime, Date systemUpdateTime, String updatePerson, String updatePersonName, Integer score) {
+        this.id = id;
+        this.code = code;
+        this.name = name;
+        this.createPerson = createPerson;
+        this.createPersonName = createPersonName;
+        this.deleteFlag = deleteFlag;
+        this.systemCreateTime = systemCreateTime;
+        this.systemUpdateTime = systemUpdateTime;
+        this.updatePerson = updatePerson;
+        this.updatePersonName = updatePersonName;
+        this.score = score;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getCreatePerson() {
+        return createPerson;
+    }
+
+    public String getCreatePersonName() {
+        return createPersonName;
+    }
+
+    public Boolean getDeleteFlag() {
+        return deleteFlag;
+    }
+
+    public Date getSystemCreateTime() {
+        return systemCreateTime;
+    }
+
+    public Date getSystemUpdateTime() {
+        return systemUpdateTime;
+    }
+
+    public String getUpdatePerson() {
+        return updatePerson;
+    }
+
+    public String getUpdatePersonName() {
+        return updatePersonName;
+    }
+
+    public Integer getScore() {
+        return score;
+    }
+}

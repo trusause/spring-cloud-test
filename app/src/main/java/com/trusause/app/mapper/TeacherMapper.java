@@ -19,6 +19,6 @@ public interface TeacherMapper {
 
     Teacher selectByCode(@Param("code") String code);
 
-    List<Teacher> selectByName(@Param("name") String name);
+    List<Teacher> selectByName(Teacher teacher);
 
 }
