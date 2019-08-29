@@ -7,9 +7,7 @@ import com.trusause.app.dto.ResultDTO;
 import com.trusause.app.service.TeacherService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -55,5 +53,10 @@ public class TeacherController {
     public ResultDTO findByNameUseMybqtis(Teacher teacher) {
         PageInfo<Teacher> teacherList = teacherService.selectByName(teacher);
         return ResultDTO.builder().data(teacherList).build();
+    }
+
+    @PostMapping("/insertWithPrimaryKey")
+    public ResultDTO insertWithPrimaryKey(@RequestBody Teacher teacher) {
+        return ResultDTO.builder().data(teacherService.insertWithPrimaryKey(teacher)).build();
     }
 }

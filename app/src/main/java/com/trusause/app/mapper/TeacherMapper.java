@@ -1,6 +1,7 @@
 package com.trusause.app.mapper;
 
 import com.trusause.app.domain.Teacher;
+import com.trusause.app.mapper.common.CommMapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -13,7 +14,7 @@ import java.util.List;
  * @Description ${description}
  */
 @Repository
-public interface TeacherMapper {
+public interface TeacherMapper extends CommMapper<Teacher> {
 
     Teacher sel(@Param("id") int id);
 
@@ -21,4 +22,5 @@ public interface TeacherMapper {
 
     List<Teacher> selectByName(Teacher teacher);
 
+    int insertWithPrimaryKey(Teacher teacher);
 }

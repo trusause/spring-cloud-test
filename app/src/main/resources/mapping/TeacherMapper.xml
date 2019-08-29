@@ -44,16 +44,17 @@
     </select>
 
     <!--<select id="findByNameWithPage" parameterType="" resultMap="baseResultMap">-->
-        <!--select * from t_test_teacher-->
-        <!--<where>-->
-            <!--<if test="name!=null AND name!=''">-->
-                <!--AND name like CONCAT("%",#{name},"%")-->
-            <!--</if>-->
-        <!--</where>-->
+    <!--select * from t_test_teacher-->
+    <!--<where>-->
+    <!--<if test="name!=null AND name!=''">-->
+    <!--AND name like CONCAT("%",#{name},"%")-->
+    <!--</if>-->
+    <!--</where>-->
     <!--</select>-->
 
-    <insert id="insert">
-      insert into
+    <insert id="insertWithPrimaryKey" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.trusause.app.domain.Teacher">
+        INSERT INTO t_test_teacher (code,name) VALUES (#{code,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR})
     </insert>
 
 </mapper>

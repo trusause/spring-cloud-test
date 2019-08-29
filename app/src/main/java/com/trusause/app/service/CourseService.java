@@ -26,7 +26,7 @@ public class CourseService {
     CourseMapper courseMapper;
 
     public Course selectByPrimaryKey(Integer id) {
-        return courseMapper.selectByPrimaryKey(id);
+        return courseMapper.selectByPrimaryKeyOwner(id);
     }
 
     @Transactional
@@ -40,8 +40,15 @@ public class CourseService {
     }
 
     @Transactional
-    public int insertSelective(Course record) {
-        return courseMapper.insertSelective(record);
+    public Integer insertSelective(Course record) {
+        courseMapper.insertSelective(record);
+        return record.getId();
+    }
+
+    @Transactional
+    public Integer insertUseGeneratedKeys(Course record) {
+        courseMapper.insertUseGeneratedKeys(record);
+        return record.getId();
     }
 
     @Transactional
@@ -56,8 +63,7 @@ public class CourseService {
 
     @Transactional
     public int deleteByPrimaryKey(Integer id) {
-        return courseMapper.deleteByPrimaryKey(id);
+        return courseMapper.deleteByPrimaryKeyOwner(id);
     }
-
 
 }

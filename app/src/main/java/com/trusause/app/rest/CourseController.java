@@ -1,11 +1,8 @@
 package com.trusause.app.rest;
 
-import com.github.pagehelper.PageInfo;
 import com.trusause.app.domain.Course;
-import com.trusause.app.domain.Teacher;
 import com.trusause.app.dto.ResultDTO;
 import com.trusause.app.service.CourseService;
-import com.trusause.app.service.TeacherService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -44,6 +41,11 @@ public class CourseController {
         return ResultDTO.builder().data(courseService.insertSelective(record)).build();
     }
 
+    @PostMapping("/insertUseGeneratedKeys")
+    public ResultDTO insertUseGeneratedKeys(@RequestBody Course record) {
+        return ResultDTO.builder().data(courseService.insertUseGeneratedKeys(record)).build();
+    }
+
     @PutMapping("/updateByPrimaryKey")
     public ResultDTO updateByPrimaryKey(@RequestBody Course record) {
         return ResultDTO.builder().data(courseService.updateByPrimaryKey(record)).build();
@@ -58,5 +60,6 @@ public class CourseController {
     public ResultDTO deleteByPrimaryKey(Integer id) {
         return ResultDTO.builder().data(courseService.deleteByPrimaryKey(id)).build();
     }
+
 
 }

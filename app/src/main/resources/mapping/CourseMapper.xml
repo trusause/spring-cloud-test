@@ -18,7 +18,7 @@
     system_update_time, update_person, update_person_name
   </sql>
 
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKeyOwner" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from t_test_course
@@ -31,7 +31,7 @@
     from t_test_course
   </select>
 
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKeyOwner" parameterType="java.lang.Integer">
     delete from t_test_course
     where id = #{id,jdbcType=INTEGER}
   </delete>
