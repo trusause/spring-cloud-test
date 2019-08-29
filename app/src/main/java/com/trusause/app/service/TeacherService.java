@@ -52,4 +52,9 @@ public class TeacherService {
         PageInfo pageInfo1 = new PageInfo(teacherMapper.selectByName(teacher));
         return pageInfo1;
     }
+
+    public Integer insertWithPrimaryKey(Teacher teacher) {
+        teacherMapper.insertWithPrimaryKey(teacher);
+        return teacher.getId();
+    }
 }

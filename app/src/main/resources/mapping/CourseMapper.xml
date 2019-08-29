@@ -17,26 +17,33 @@
     id, code, name, create_person, create_person_name, delete_flag, system_create_time, 
     system_update_time, update_person, update_person_name
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+  <select id="selectByPrimaryKeyOwner" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from t_test_course
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+
+  <select id="findAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_test_course
+  </select>
+
+  <delete id="deleteByPrimaryKeyOwner" parameterType="java.lang.Integer">
     delete from t_test_course
     where id = #{id,jdbcType=INTEGER}
   </delete>
+
   <insert id="insert" parameterType="com.trusause.app.domain.Course">
-    insert into t_test_course (id, code, name, 
-      create_person, create_person_name, delete_flag, 
-      system_create_time, system_update_time, 
-      update_person, update_person_name)
+    insert into t_test_course (<include refid="Base_Column_List" />)
     values (#{id,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
       #{createPerson,jdbcType=VARCHAR}, #{createPersonName,jdbcType=VARCHAR}, #{deleteFlag,jdbcType=BIT}, 
       #{systemCreateTime,jdbcType=TIMESTAMP}, #{systemUpdateTime,jdbcType=TIMESTAMP}, 
       #{updatePerson,jdbcType=VARCHAR}, #{updatePersonName,jdbcType=VARCHAR})
   </insert>
+
   <insert id="insertSelective" parameterType="com.trusause.app.domain.Course">
     insert into t_test_course
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -104,6 +111,7 @@
       </if>
     </trim>
   </insert>
+
   <update id="updateByPrimaryKeySelective" parameterType="com.trusause.app.domain.Course">
     update t_test_course
     <set>
@@ -137,6 +145,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
+
   <update id="updateByPrimaryKey" parameterType="com.trusause.app.domain.Course">
     update t_test_course
     set code = #{code,jdbcType=VARCHAR},
@@ -150,4 +159,5 @@
       update_person_name = #{updatePersonName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
 </mapper>
