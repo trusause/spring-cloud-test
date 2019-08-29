@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.trusause.app.mapper.TeacherMapper">
+
+    <resultMap id="baseResultMap" type="com.trusause.app.dto.TeacherResponseDTO">
+        <!--1、模型属性和表的列入股同名是可以省略不写的
+            2、jdbcType可以忽略不写
+        -->
+        <!--<id column="id" property="id"/>-->
+        <!--<result column="code" property="code"/>-->
+        <!--<result column="name" property="name"/>-->
+        <result column="delete_flag" property="deleteFlag"/>
+        <result column="system_create_time" property="systemCreateTime"/>
+        <result column="system_update_time" jdbcType="DATE" property="systemUpdateTime"/>
+        <result column="create_person" property="createPerson"/>
+        <result column="create_person_name" property="createPersonName"/>
+        <result column="update_person" jdbcType="VARCHAR" property="updatePerson"/>
+        <result column="update_person_name" jdbcType="VARCHAR" property="updatePersonName"/>
+    </resultMap>
+
+    <select id="sel" resultMap="baseResultMap">
+        select * from t_test_teacher
+        <where>
+            <if test="id!=null and id!=''">
+                AND id = #{id}
+            </if>
+        </where>
+    </select>
+
+    <!--$的用法，$不会预编译，会存在sql注入，适用于已知的值-->
+    <select id="selectByCode" resultMap="baseResultMap">
+        select * from t_test_teacher where code = '${code}'
+    </select>
+
+    <!--#号的用法，#会预编译（不是数据库的预编译），可防止注入，适用于用户动态输入的值-->
+    <select id="selectByName" resultMap="baseResultMap">
+        select * from t_test_teacher
+        <where>
+            <if test="name!=null and name!=''">
+                AND name like CONCAT("%",#{name},"%")
+            </if>
+        </where>
+    </select>
+
+    <!--<select id="findByNameWithPage" parameterType="" resultMap="baseResultMap">-->
+        <!--select * from t_test_teacher-->
+        <!--<where>-->
+            <!--<if test="name!=null AND name!=''">-->
+                <!--AND name like CONCAT("%",#{name},"%")-->
+            <!--</if>-->
+        <!--</where>-->
+    <!--</select>-->
+
+    <insert id="insert">
+      insert into
+    </insert>
+
+</mapper>

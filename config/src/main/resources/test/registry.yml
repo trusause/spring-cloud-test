@@ -1,0 +1,11 @@
+server:
+  port: 8089
+eureka:
+  server:
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 4000 # This is not required
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://registry:8089/eureka/

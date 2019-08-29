@@ -1,0 +1,26 @@
+logging:
+  logstash: ${LOGSTASH_PATH_PREFIX}:5000
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8089/eureka/
+  instance:
+    hostname: localhost
+spring:
+  application:
+    name: demo
+  cloud:
+    config:
+      uri: http://localhost:8088
+      fail-fast: true
+      password: ${CONFIG_SERVICE_PASSWORD}
+      username: user
+
+# 以下用于单服务启动，不报错，（用于调试：）
+#eureka:
+#  client:
+#    fetch-registry: false
+#    register-with-eureka: false
+
+
+

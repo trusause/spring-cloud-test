@@ -1,0 +1,29 @@
+logging:
+  level:
+    org.springframework.security: INFO
+  path: logs/${spring.application.name}/
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+#全局跨服务调用超时时间，是ReadTimeout*2
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+spring:
+  aop:
+    auto: true
+    proxy-target-class: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    open-in-view: true
+  http:
+    multipart:
+      enabled: true
+      max-file-size: 20MB      #(这里是限制的文件大小)
+      max-request-size: 20MB   #(这里是限制的文件大小)

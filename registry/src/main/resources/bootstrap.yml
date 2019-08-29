@@ -1,0 +1,26 @@
+spring:
+  profiles:
+    active: native
+  application:
+    name: registry
+#  cloud:
+#    config:
+#      uri: http://localhost:8088
+#      fail-fast: true
+#      password: ${CONFIG_SERVICE_PASSWORD}
+#      username: user
+
+logging:
+  logstash: ${LOGSTASH_PATH_PREFIX}:5000
+
+# 以下用于单服务启动，不报错，（用于调试：）
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+    defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  instance:
+    hostname: localhost
+
+server:
+  port: 8089

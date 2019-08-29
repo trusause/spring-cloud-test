@@ -1,0 +1,29 @@
+server:
+  port: 8088
+spring:
+  profiles:
+    active: native
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+---
+spring:
+  profiles: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/shared
+---
+spring:
+  profiles: test
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/trusause/spring-cloud-test
+          search-paths: my-config-server/src/main/resources/test
+          username: trusause
+          password: ai181003
+          default-label: develop
+
