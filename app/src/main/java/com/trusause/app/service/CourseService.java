@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * @Author: weicl
  * @Date: 2019/6/25 9:16 AM
@@ -25,6 +27,11 @@ public class CourseService {
 
     public Course selectByPrimaryKey(Integer id) {
         return courseMapper.selectByPrimaryKey(id);
+    }
+
+    @Transactional
+    public List<Course> findAll() {
+        return courseMapper.findAll();
     }
 
     @Transactional
@@ -51,4 +58,6 @@ public class CourseService {
     public int deleteByPrimaryKey(Integer id) {
         return courseMapper.deleteByPrimaryKey(id);
     }
+
+
 }

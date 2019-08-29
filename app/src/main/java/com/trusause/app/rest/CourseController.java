@@ -24,6 +24,11 @@ public class CourseController {
     @Autowired
     CourseService courseService;
 
+    @GetMapping("/findAll")
+    public ResultDTO findAll() {
+        return ResultDTO.builder().data(courseService.findAll()).build();
+    }
+
     @GetMapping("/selectByPrimaryKey")
     public ResultDTO selectByPrimaryKey(Integer id) {
         return ResultDTO.builder().data(courseService.selectByPrimaryKey(id)).build();
