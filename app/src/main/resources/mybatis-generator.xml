@@ -48,13 +48,13 @@
             是否创建一个不可变的类，如果为true，
             那么MBG会创建一个没有setter方法的类，取而代之的是类似constructorBased的类
             -->
-            <property name="immutable" value="true"/>
+            <property name="immutable" value="false"/>
             <!-- 设置一个根对象，
                 如果设置了这个根对象，那么生成的keyClass或者recordClass会继承这个类；在Table的rootClass属性中可以覆盖该选项
                 注意：如果在key class或者record class中有root class相同的属性，MBG就不会重新生成这些属性了，包括：
                    1，属性名相同，类型相同，有相同的getter/setter方法；
                 -->
-            <property name="rootClass" value="com.trusause.app.domain.GenericEntity"/>
+            <!--<property name="rootClass" value="com.trusause.app.domain.GenericEntity"/>-->
         </javaModelGenerator>
 
         <!--sql映射文件生成的位置-->
